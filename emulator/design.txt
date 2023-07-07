@@ -1,0 +1,25 @@
+8bit cpu
+
+16bit address bus = 8bit segment + 8bit effective
+64kb memory = 256 segments of 256 bytes each
+
+registers: 
+
+	8bit : A = acumulator
+	8bit : X = source
+	8bit : Y = destination / counter
+
+	8bit : SP = stack pointer
+	8bit : SS = stack segment
+	8bit : DS = data segment
+
+	8bit : F = flags
+
+	16bit : PC = program counter
+
+	flags:
+		Carry
+		Sign
+		Overflow
+		Zero
+		Direction

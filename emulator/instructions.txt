@@ -1,0 +1,246 @@
+lda val
+lda [eff_addr]
+lda [eff_addr + X]
+lda [eff_addr + Y]
+lda [[eff_addr + X]]
+lda [[eff_addr] + Y]
+lda [phy_addr]
+lda [phy_addr + X]
+lda [phy_addr + Y]
+
+ldx val
+ldx [eff_addr]
+ldx [eff_addr + Y]
+ldx [[eff_addr] + Y]
+ldx [phy_addr]
+ldx [phy_addr + Y]
+
+ldy val
+ldy [eff_addr]
+ldy [eff_addr + X]
+ldy [[eff_addr + X]]
+ldy [phy_addr]
+ldy [phy_addr + X]
+
+sta [eff_addr]
+sta [eff_addr + X]
+sta [eff_addr + Y]
+sta [[eff_addr + X]]
+sta [[eff_addr] + Y]
+sta [phy_addr]
+sta [phy_addr + X]
+sta [phy_addr + Y]
+
+stx [eff_addr]
+stx [eff_addr + Y]
+stx [[eff_addr] + Y]
+stx [phy_addr]
+stx [phy_addr + Y]
+
+sty [eff_addr]
+sty [eff_addr + X]
+sty [[eff_addr + X]]
+sty [phy_addr]
+sty [phy_addr + X]
+
+tax
+tay
+txa
+txy
+txsp
+tya
+tyx
+tyss
+tyds
+tspx
+tssy
+tdsy
+
+ina
+inx
+iny
+inc [eff_addr]
+inc [eff_addr + X]
+inc [phy_addr]
+inc [phy_addr + Y]
+
+dea
+dex
+dey
+dec [eff_addr]
+dec [eff_addr + X]
+dec [phy_addr]
+dec [phy_addr + Y]
+
+adc val
+adc [eff_addr]
+adc [eff_addr + X]
+adc [eff_addr + Y]
+adc [[eff_addr + X]]
+adc [[eff_addr] + Y]
+adc [phy_addr]
+adc [phy_addr + X]
+adc [phy_addr + Y]
+
+sbb val
+sbb [eff_addr]
+sbb [eff_addr + X]
+sbb [eff_addr + Y]
+sbb [[eff_addr + X]]
+sbb [[eff_addr] + Y]
+sbb [phy_addr]
+sbb [phy_addr + X]
+sbb [phy_addr + Y]
+
+and val
+and [eff_addr]
+and [eff_addr + X]
+and [eff_addr + Y]
+and [[eff_addr + X]]
+and [[eff_addr] + Y]
+and [phy_addr]
+and [phy_addr + X]
+and [phy_addr + Y]
+
+or val
+or [eff_addr]
+or [eff_addr + X]
+or [eff_addr + Y]
+or [[eff_addr + X]]
+or [[eff_addr] + Y]
+or [phy_addr]
+or [phy_addr + X]
+or [phy_addr + Y]
+
+xor val
+xor [eff_addr]
+xor [eff_addr + X]
+xor [eff_addr + Y]
+xor [[eff_addr + X]]
+xor [[eff_addr] + Y]
+xor [phy_addr]
+xor [phy_addr + X]
+xor [phy_addr + Y]
+
+shla
+shl [eff_addr]
+shl [eff_addr + X]
+shl [phy_addr]
+shl [phy_addr + X]
+
+shra
+shr [eff_addr]
+shr [eff_addr + X]
+shr [phy_addr]
+shr [phy_addr + X]
+
+rola
+rol [eff_addr]
+rol [eff_addr + X]
+rol [phy_addr]
+rol [phy_addr + X]
+
+rora
+ror [eff_addr]
+ror [eff_addr + X]
+ror [phy_addr]
+ror [phy_addr + X]
+
+cmp val
+cmp [eff_addr]
+cmp [eff_addr + X]
+cmp [eff_addr + Y]
+cmp [[eff_addr + X]]
+cmp [[eff_addr] + Y]
+cmp [phy_addr]
+cmp [phy_addr + X]
+cmp [phy_addr + Y]
+
+cpx val
+cpx [eff_addr]
+cpx [eff_addr + Y]
+cpx [phy_addr]
+cpx [phy_addr + Y]
+
+cpy val
+cpy [eff_addr]
+cpy [eff_addr + X]
+cpy [phy_addr]
+cpy [phy_addr + X]
+
+jmp [phy_addr]
+jc  [phy_addr]
+jnc [phy_addr]
+je  [phy_addr]
+jne [phy_addr]
+js  [phy_addr]
+jns [phy_addr]
+jo  [phy_addr]
+jno [phy_addr]
+ja  [phy_addr]
+jna [phy_addr]
+jl  [phy_addr]
+jnl [phy_addr]
+jg  [phy_addr]
+jng [phy_addr]
+
+clc
+clo
+cls
+clz
+cld
+
+stc
+sto
+sts
+stz
+std
+
+stf val
+
+call [phy_addr]
+ret
+
+pusha
+pushx
+pushy
+pushf
+pushall
+push val
+
+popa
+popx
+popy
+popf
+popall
+pop val
+
+mul val
+mul [eff_addr]
+mul [eff_addr + X]
+mul [phy_addr]
+mul [phy_addr + X]
+
+div val
+div [eff_addr]
+div [eff_addr + X]
+div [phy_addr]
+div [phy_addr + X]
+
+mod val
+mod [eff_addr]
+mod [eff_addr + X]
+mod [phy_addr]
+mod [phy_addr + X]
+
+int val
+
+nop
+
+stop
+
+lods
+stos
+movs
+
+loop [phy_addr]
