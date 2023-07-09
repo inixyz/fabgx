@@ -221,7 +221,7 @@
 0xBF | 1 | sto
 0xC0 | 1 | std
 
-0xC1 | 2 | stf val
+0xC1 | 2 | ldf val
 
 0xC2 | 1 | pusha
 0xC3 | 1 | pushx
