@@ -89,5 +89,6 @@ void jng(void);
 void loop(void);
 
 void call(void);
+void ret(void);
 
 #endif
