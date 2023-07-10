@@ -202,3 +202,214 @@ void sbb(void)
 	A = temp;
 	update_flagsZS(A);
 }
+
+void mul(void)
+{
+	temp = A * fetched;
+	A = temp;
+
+	set_flag(CARRY, temp > 255);
+	update_flagsZS(A);
+}
+
+void div(void)
+{
+	A /= fetched; update_flagsZS(A);
+}
+
+void mod(void)
+{
+	A %= fetched; update_flagsZS(A);
+}
+
+void and(void)
+{
+	A &= fetched; update_flagsZS(A);
+}
+
+void or(void)
+{
+	A |= fetched; update_flagsZS(A);
+}
+
+void xor(void)
+{
+	A ^= fetched; update_flagsZS(A);
+}
+
+void shla(void)
+{
+	set_flag(CARRY, sign(A));
+	A <<= 1; update_flagsZS(A);
+}
+
+void shl(void)
+{
+	set_flag(CARRY, sign(memory[location]));
+	memory[location] <<= 1; update_flagsZS(memory[location]);
+}
+
+void shra(void)
+{
+	set_flag(CARRY, A & 0b00000001);
+	A >>= 1; update_flagsZS(A);
+}
+
+void shr(void)
+{
+	set_flag(CARRY, memory[location] & 0b00000001);
+	memory[location] >>= 1; update_flagsZS(memory[location]);
+}
+
+void rola(void)
+{
+	temp = sign(A);
+	A <<= 1;
+	A |= get_flag(CARRY);
+	set_flag(CARRY, temp);
+	update_flagsZS(A);
+}
+
+void rol(void)
+{
+	temp = sign(memory[location]);
+	memory[location] <<= 1;
+	memory[location] |= get_flag(CARRY);
+	set_flag(CARRY, temp);
+	update_flagsZS(memory[location]);
+}
+
+void rora(void)
+{
+	temp = A & 0b00000001;
+	A >>= 1;
+	A |= get_flag(CARRY) << 7;
+	set_flag(CARRY, temp);
+	update_flagsZS(A);
+}
+
+void rorr(void)
+{
+	temp = memory[location] & 0b00000001;
+	memory[location] >>= 1;
+	memory[location] |= get_flag(CARRY) << 7;
+	set_flag(CARRY, temp);
+	update_flagsZS(memory[location]);
+}
+
+void cmp(void)
+{
+	temp = A - fetched;
+	set_flag(CARRY, temp > 255);
+
+	if(sign(A) && !sign(fetched) && !sign(temp)) set_flag(OVERFLOW, 1);
+	else if(!sign(A) && sign(fetched) && sign(temp)) set_flag(OVERFLOW, 1);
+	else set_flag(OVERFLOW, 0);
+
+	update_flagsZS(temp);
+}
+
+void cpx(void)
+{
+	temp = X - fetched;
+	set_flag(CARRY, temp > 255);
+
+	if(sign(X) && !sign(fetched) && !sign(temp)) set_flag(OVERFLOW, 1);
+	else if(!sign(X) && sign(fetched) && sign(temp)) set_flag(OVERFLOW, 1);
+	else set_flag(OVERFLOW, 0);
+
+	update_flagsZS(temp);
+}
+
+void cpy(void)
+{
+	temp = Y - fetched;
+	set_flag(CARRY, temp > 255);
+
+	if(sign(Y) && !sign(fetched) && !sign(temp)) set_flag(OVERFLOW, 1);
+	else if(!sign(Y) && sign(fetched) && sign(temp)) set_flag(OVERFLOW, 1);
+	else set_flag(OVERFLOW, 0);
+
+	update_flagsZS(temp);
+}
+
+void jmp(void) {PC = location;}
+
+void jc(void)
+{
+	if(get_flag(CARRY)) PC = location;
+}
+
+void jnc(void)
+{
+	if(!get_flag(CARRY)) PC = location;
+}
+
+void je(void)
+{
+	if(get_flag(ZERO)) PC = location;
+}
+
+void jne(void)
+{
+	if(!get_flag(ZERO)) PC = location;
+}
+
+void js(void)
+{
+	if(get_flag(SIGN)) PC = location;
+}
+
+void jns(void)
+{
+	if(!get_flag(SIGN)) PC = location;
+}
+
+void jo(void)
+{
+	if(get_flag(OVERFLOW)) PC = location;
+}
+
+void jno(void)
+{
+	if(!get_flag(OVERFLOW)) PC = location;
+}
+
+void ja(void)
+{
+	if(!get_flag(CARRY) && !get_flag(ZERO)) PC = location;
+}
+
+void jna(void)
+{
+	if(get_flag(CARRY) || get_flag(ZERO)) PC = location;
+}
+
+void jl(void)
+{
+	if(get_flag(SIGN) != get_flag(OVERFLOW)) PC = location;
+}
+
+void jge(void)
+{
+	if(get_flag(SIGN) == get_flag(OVERFLOW)) PC = location;
+}
+
+void jg(void)
+{
+	if(!get_flag(ZERO) && get_flag(SIGN) == get_flag(OVERFLOW)) PC = location;
+}
+
+void jng(void)
+{
+	if(get_flag(ZERO) || get_flag(SIGN) != get_flag(OVERFLOW)) PC = location;
+}
+
+void loop(void)
+{
+	if(Y)
+	{
+		Y--;
+		PC = location;
+	}
+}

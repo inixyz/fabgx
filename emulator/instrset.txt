@@ -142,25 +142,25 @@
 0x7C | 3 | xor [phy_addr + X]
 0x7D | 3 | xor [phy_addr + Y]
 
-0x7E | 2 | shl val
+0x7E | 1 | shla
 0x7F | 2 | shl [eff_addr]
 0x80 | 2 | shl [eff_addr + X]
 0x81 | 3 | shl [phy_addr]
 0x82 | 3 | shl [phy_addr + X]
 
-0x83 | 2 | shr val
+0x83 | 1 | shra
 0x84 | 2 | shr [eff_addr]
 0x85 | 2 | shr [eff_addr + X]
 0x86 | 3 | shr [phy_addr]
 0x87 | 3 | shr [phy_addr + X]
 
-0x88 | 2 | rol val
+0x88 | 1 | rola
 0x89 | 2 | rol [eff_addr]
 0x8A | 2 | rol [eff_addr + X]
 0x8B | 3 | rol [phy_addr]
 0x8C | 3 | rol [phy_addr + X]
 
-0x8D | 2 | ror val
+0x8D | 1 | rora
 0x8E | 2 | ror [eff_addr]
 0x8F | 2 | ror [eff_addr + X]
 0x90 | 3 | ror [phy_addr]
@@ -200,7 +200,7 @@
 0xAE | 3 | ja  [phy_addr]
 0xAF | 3 | jna [phy_addr]
 0xB0 | 3 | jl  [phy_addr]
-0xB1 | 3 | jnl [phy_addr]
+0xB1 | 3 | jge [phy_addr]
 0xB2 | 3 | jg  [phy_addr]
 0xB3 | 3 | jng [phy_addr]
 
