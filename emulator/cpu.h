@@ -11,7 +11,7 @@ extern uint16_t PC;
 extern uint8_t memory[MEMSIZE];
 
 extern uint8_t fetched;
-extern uint16_t location;
+extern uint16_t location, temp;
 
 typedef enum
 {
@@ -27,6 +27,7 @@ void set_flag(Flag flag, uint8_t val);
 void update_flagsZS(uint8_t val);
 
 uint16_t addrcat(uint8_t seg_addr, uint8_t eff_addr);
+uint8_t sign(uint8_t val);
 
 void reset(void);
 uint8_t readcurr(void);

@@ -142,25 +142,25 @@
 0x7C | 3 | xor [phy_addr + X]
 0x7D | 3 | xor [phy_addr + Y]
 
-0x7E | 1 | shl val
+0x7E | 2 | shl val
 0x7F | 2 | shl [eff_addr]
 0x80 | 2 | shl [eff_addr + X]
 0x81 | 3 | shl [phy_addr]
 0x82 | 3 | shl [phy_addr + X]
 
-0x83 | 1 | shr val
+0x83 | 2 | shr val
 0x84 | 2 | shr [eff_addr]
 0x85 | 2 | shr [eff_addr + X]
 0x86 | 3 | shr [phy_addr]
 0x87 | 3 | shr [phy_addr + X]
 
-0x88 | 1 | rol val
+0x88 | 2 | rol val
 0x89 | 2 | rol [eff_addr]
 0x8A | 2 | rol [eff_addr + X]
 0x8B | 3 | rol [phy_addr]
 0x8C | 3 | rol [phy_addr + X]
 
-0x8D | 1 | ror val
+0x8D | 2 | ror val
 0x8E | 2 | ror [eff_addr]
 0x8F | 2 | ror [eff_addr + X]
 0x90 | 3 | ror [phy_addr]
@@ -215,11 +215,11 @@
 0xBA | 1 | clo
 0xBB | 1 | cld
 
-0xBC | 1 | stc
-0xBD | 1 | stz
-0xBE | 1 | sts
-0xBF | 1 | sto
-0xC0 | 1 | std
+0xBC | 1 | sec
+0xBD | 1 | sez
+0xBE | 1 | ses
+0xBF | 1 | seo
+0xC0 | 1 | sed
 
 0xC1 | 2 | ldf val
 
@@ -235,7 +235,7 @@
 0xCA | 1 | popy
 0xCB | 1 | popf
 0xCC | 1 | popall
-0xCD | 2 | pop val
+0xCD | 2 | pop [eff_addr]
 
 0xCE | 2 | int val
 
@@ -245,5 +245,7 @@
 
 0xD2 | 1 | tyes
 0xD3 | 1 | tesy
+
+0xD4 | 3 | pop [phy_addr]
 
 0xFF | 1 | stop

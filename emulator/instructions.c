@@ -136,3 +136,69 @@ void tesy(void)
 {
 	ES = Y; update_flagsZS(ES);
 }
+
+void ina(void)
+{
+	A++; update_flagsZS(A);
+}
+
+void inx(void)
+{
+	X++; update_flagsZS(X);
+}
+
+void iny(void)
+{
+	Y++; update_flagsZS(Y);
+}
+
+void inc(void)
+{
+	memory[location]++; update_flagsZS(memory[location]);
+}
+
+void dea(void)
+{
+	A--; update_flagsZS(A);
+}
+
+void dex(void)
+{
+	X--; update_flagsZS(X);
+}
+
+void dey(void)
+{
+	Y--; update_flagsZS(Y);
+}
+
+void dec(void)
+{
+	memory[location]--; update_flagsZS(memory[location]);
+}
+
+void adc(void)
+{
+	temp = A + fetched + get_flag(CARRY);
+	set_flag(CARRY, temp > 255);
+
+	if(sign(A) && sign(fetched) && !sign(temp)) set_flag(OVERFLOW, 1);
+	else if(!sign(A) && !sign(fetched) && sign(temp)) set_flag(OVERFLOW, 1);
+	else set_flag(OVERFLOW, 0);
+
+	A = temp;
+	update_flagsZS(A);
+}
+
+void sbb(void)
+{ 
+	temp = A - fetched - get_flag(CARRY);
+	set_flag(CARRY, temp > 255);
+
+	if(sign(A) && !sign(fetched) && !sign(temp)) set_flag(OVERFLOW, 1);
+	else if(!sign(A) && sign(fetched) && sign(temp)) set_flag(OVERFLOW, 1);
+	else set_flag(OVERFLOW, 0);
+
+	A = temp;
+	update_flagsZS(A);
+}

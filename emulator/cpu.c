@@ -8,7 +8,7 @@ uint16_t PC;
 uint8_t memory[MEMSIZE];
 
 uint8_t fetched;
-uint16_t location;
+uint16_t location, temp;
 
 uint8_t get_flag(Flag flag)
 {
@@ -30,6 +30,11 @@ void update_flagsZS(uint8_t val)
 uint16_t addrcat(uint8_t seg_addr, uint8_t eff_addr)
 {
 	return (uint16_t)seg_addr << 8 | eff_addr;
+}
+
+uint8_t sign(uint8_t val)
+{
+	return (val & 0b10000000) ? 1 : 0;
 }
 
 void reset(void)

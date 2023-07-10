@@ -35,4 +35,17 @@ void tssx(void);
 void tdsy(void);
 void tesy(void);
 
+void ina(void);
+void inx(void);
+void iny(void);
+void inc(void);
+
+void dea(void);
+void dex(void);
+void dey(void);
+void dec(void);
+
+void adc(void);
+void sbb(void);
+
 #endif
