@@ -88,4 +88,6 @@ void jng(void);
 
 void loop(void);
 
+void call(void);
+
 #endif
