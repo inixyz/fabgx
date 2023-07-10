@@ -413,3 +413,10 @@ void loop(void)
 		PC = location;
 	}
 }
+
+void call(void)
+{
+	memory[addrcat(SS, SP--)] = PC >> 8;
+	memory[addrcat(SS, SP--)] = PC;
+	PC = location;
+}
