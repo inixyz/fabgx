@@ -7,7 +7,7 @@ uint16_t PC;
 
 uint8_t memory[MEMSIZE];
 
-uint8_t fetched;
+uint8_t fetched, running;
 uint16_t location, temp;
 
 uint8_t get_flag(Flag flag)

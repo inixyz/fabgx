@@ -10,7 +10,7 @@ extern uint16_t PC;
 
 extern uint8_t memory[MEMSIZE];
 
-extern uint8_t fetched;
+extern uint8_t fetched, running;
 extern uint16_t location, temp;
 
 typedef enum

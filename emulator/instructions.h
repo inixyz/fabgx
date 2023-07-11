@@ -91,4 +91,37 @@ void loop(void);
 void call(void);
 void ret(void);
 
+void clc(void);
+void clz(void);
+void cls(void);
+void clo(void);
+void cld(void);
+
+void sec(void);
+void sez(void);
+void ses(void);
+void seo(void);
+void sed(void);
+
+void ldf(void);
+
+void pusha(void);
+void pushx(void);
+void pushy(void);
+void pushf(void);
+void pushall(void);
+void push(void);
+
+void popa(void);
+void popx(void);
+void popy(void);
+void popf(void);
+void popall(void);
+void pop(void);
+
+void intr(void);
+void lods(void);
+void stos(void);
+void stop(void);
+
 #endif

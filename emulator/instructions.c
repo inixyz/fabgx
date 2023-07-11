@@ -416,7 +416,155 @@ void loop(void)
 
 void call(void)
 {
-	memory[addrcat(SS, SP--)] = PC >> 8;
-	memory[addrcat(SS, SP--)] = PC;
+	memory[addrcat(SS, --SP)] = PC >> 8;
+	memory[addrcat(SS, --SP)] = PC;
 	PC = location;
+}
+
+void ret(void)
+{
+	PC = memory[addrcat(SS, SP++)] << 8 | memory[addrcat(SS, SP++)];
+}
+
+void clc(void)
+{
+	set_flag(CARRY, 0);
+}
+
+void clz(void)
+{
+	set_flag(ZERO, 0);
+}
+
+void cls(void)
+{
+	set_flag(SIGN, 0);
+}
+
+void clo(void)
+{
+	set_flag(OVERFLOW, 0);
+}
+
+void cld(void)
+{
+	set_flag(DIRECTION, 0);
+}
+
+void sec(void)
+{
+	set_flag(CARRY, 1);
+}
+
+void sez(void)
+{
+	set_flag(ZERO, 1);
+}
+
+void ses(void)
+{
+	set_flag(SIGN, 1);
+}
+
+void seo(void)
+{
+	set_flag(OVERFLOW, 1);
+}
+
+void sed(void)
+{
+	set_flag(DIRECTION, 1);
+}
+
+void ldf(void)
+{
+	F = fetched;
+}
+
+void pusha(void)
+{
+	memory[addrcat(SS, --SP)] = A;	
+}
+
+void pushx(void)
+{
+	memory[addrcat(SS, --SP)] = X;	
+}
+
+void pushy(void)
+{
+	memory[addrcat(SS, --SP)] = Y;
+}
+
+void pushf(void)
+{
+	memory[addrcat(SS, --SP)] = F;	
+}
+
+void pushall(void)
+{
+	memory[addrcat(SS, --SP)] = A;
+	memory[addrcat(SS, --SP)] = X;
+	memory[addrcat(SS, --SP)] = Y;
+	memory[addrcat(SS, --SP)] = F;
+}
+
+void push(void)
+{
+	memory[addrcat(SS, --SP)] = fetched;
+}
+
+void popa(void)
+{
+	A = memory[addrcat(SS, SP++)];	
+}
+
+void popx(void)
+{
+	X = memory[addrcat(SS, SP++)];	
+}
+
+void popy(void)
+{
+	Y = memory[addrcat(SS, SP++)];
+}
+
+void popf(void)
+{
+	F = memory[addrcat(SS, SP++)];	
+}
+
+void popall(void)
+{
+	F = memory[addrcat(SS, SP++)];
+	Y = memory[addrcat(SS, SP++)];
+	X = memory[addrcat(SS, SP++)];
+	A = memory[addrcat(SS, SP++)];
+}
+
+void pop(void)
+{
+	memory[location] = memory[addrcat(SS, SP++)];
+}
+
+void intr(void)
+{
+	//TODO: BIOS
+}
+
+void lods(void)
+{
+	A = memory[addrcat(DS, X)];
+	X = get_flag(DIRECTION) ? X - 1 : X + 1;
+}
+
+void stos(void)
+{
+	memory[addrcat(ES, Y)] = A;
+	Y = get_flag(DIRECTION) ? Y - 1 : Y + 1;
+}
+
+void stop(void)
+{
+	running = 0;
 }

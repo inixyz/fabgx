@@ -237,7 +237,7 @@
 0xCC | 1 | popall
 0xCD | 2 | pop [eff_addr]
 
-0xCE | 2 | int val
+0xCE | 2 | intr val
 
 0xCF | 1 | lods
 0xD0 | 1 | stos
