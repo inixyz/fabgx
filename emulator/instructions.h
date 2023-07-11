@@ -1,7 +1,15 @@
 #ifndef INSTRUCTIONS_H
 #define INSTRUCTIONS_H
 
-void addrm_imp(void){}
+typedef struct
+{
+	void (*addr_mode)(), (*oper)();
+}instr;
+
+extern instr instrset[256];
+void init_instrset(void);
+
+void addrm_imp(void);
 void addrm_imm(void);
 void addrm_dir(void);
 void addrm_dirx(void);
@@ -11,6 +19,8 @@ void addrm_posi(void);
 void addrm_abs(void);
 void addrm_absx(void);
 void addrm_absy(void);
+
+void nop(void);
 
 void lda(void);
 void ldx(void);
@@ -49,7 +59,8 @@ void adc(void);
 void sbb(void);
 
 void mul(void);
-void div(void);
+
+void divs(void);
 void mod(void);
 
 void and(void);

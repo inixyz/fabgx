@@ -42,6 +42,8 @@ void reset(void)
 	A = 0x00; X = 0x00; Y = 0x00; SP = 0x00;
 	SS = 0x00; DS = 0x00; ES = 0x00; F = 0x00; PC = 0x00;
 
+	running = 1;
+
 	memset(memory, 0, MEMSIZE);
 }
 

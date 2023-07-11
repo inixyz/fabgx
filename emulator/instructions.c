@@ -2,6 +2,18 @@
 
 #include "cpu.h"
 
+instr instrset[256];
+
+void init_instrset(void)
+{
+	instrset[0x00] = (instr){addrm_imp, nop};
+	instrset[0x01] = (instr){addrm_imm, lda};
+
+	instrset[0xFF] = (instr){addrm_imp, stop};
+}
+
+void addrm_imp(void){}
+
 void addrm_imm(void)
 {
 	location = PC++;
@@ -46,6 +58,8 @@ void addrm_absy(void)
 {
 	location = addrcat(readcurr(), readcurr()) + Y;
 }
+
+void nop(void){}
 
 void lda(void)
 {
@@ -212,7 +226,7 @@ void mul(void)
 	update_flagsZS(A);
 }
 
-void div(void)
+void divs(void)
 {
 	A /= fetched; update_flagsZS(A);
 }

@@ -100,11 +100,11 @@
 0x57 | 3 | mul [phy_addr]
 0x58 | 3 | mul [phy_addr + X]
 
-0x59 | 2 | div val
-0x5A | 2 | div [eff_addr]
-0x5B | 2 | div [eff_addr + X]
-0x5C | 3 | div [phy_addr]
-0x5D | 3 | div [phy_addr + X]
+0x59 | 2 | divs val
+0x5A | 2 | divs [eff_addr]
+0x5B | 2 | divs [eff_addr + X]
+0x5C | 3 | divs [phy_addr]
+0x5D | 3 | divs [phy_addr + X]
 
 0x5E | 2 | mod val
 0x5F | 2 | mod [eff_addr]
