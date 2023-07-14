@@ -70,7 +70,7 @@ void init_instrset(void){
 	instrset[0x37] = (instr){addrm_dir, inc};
 	instrset[0x38] = (instr){addrm_dirx, inc};
 	instrset[0x39] = (instr){addrm_abs, inc};
-	instrset[0x3A] = (instr){addrm_asby, inc};
+	instrset[0x3A] = (instr){addrm_absy, inc};
 
 	instrset[0x3B] = (instr){addrm_imp, dea};
 	instrset[0x3C] = (instr){addrm_imp, dex};
@@ -505,7 +505,7 @@ void rora(void){
 	update_flagsZS(A);
 }
 
-void rorr(void){
+void ror(void){
 	temp = memory[location] & 0b00000001;
 	memory[location] >>= 1;
 	memory[location] |= get_flag(CARRY) << 7;

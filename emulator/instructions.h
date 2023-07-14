@@ -74,7 +74,7 @@ void shr(void);
 void rola(void);
 void rol(void);
 void rora(void);
-void rorr(void);
+void ror(void);
 
 void cmp(void);
 void cpx(void);
