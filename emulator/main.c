@@ -1,31 +1,17 @@
 #include "cpu.h"
 #include "instructions.h"
 
-#include <stdlib.h>
 #include <stdio.h>
 
-int main(void)
-{
-	FILE* file = fopen("test.bin", "r");
+int main(int argc, char** argv){
+	FILE* file = fopen(argv[1], "r");
 	fseek(file, 0, SEEK_END);
-	long filesize = ftell(file);
+	unsigned int file_size = ftell(file);
 	rewind(file);
 
-	
-
-	//printf("%x %x", memory[0], memory[1]);
 	init_instrset();
+	clear_memory();
 	reset();
-	fread(memory, 1, filesize, file);
-
-	while(running)
-	{
-		uint8_t opcode = readcurr();
-		instrset[opcode].addr_mode();
-		fetch();
-		instrset[opcode].oper();
-	}
-
-	printf("%x\n", A);
+	load_memory_file(file, file_size);
+	run();
 }
-

@@ -1,8 +1,7 @@
 #ifndef INSTRUCTIONS_H
 #define INSTRUCTIONS_H
 
-typedef struct
-{
+typedef struct{
 	void (*addr_mode)(), (*oper)();
 }instr;
 
@@ -133,6 +132,8 @@ void pop(void);
 void intr(void);
 void lods(void);
 void stos(void);
+void movs(void);
+
 void stop(void);
 
 #endif

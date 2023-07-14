@@ -2,19 +2,17 @@
 #define CPU_H
 
 #include <stdint.h>
+#include <stdio.h>
 
 #define MEMSIZE 65536
 
-extern uint8_t A, X, Y, SP, SS, DS, ES, F;
+extern uint8_t A, X, Y, SP, SS, DS, ES, F, memory[MEMSIZE];
 extern uint16_t PC;
-
-extern uint8_t memory[MEMSIZE];
 
 extern uint8_t fetched, running;
 extern uint16_t location, temp;
 
-typedef enum
-{
+typedef enum{
 	CARRY = (1 << 0),
 	ZERO = (1 << 1),
 	SIGN = (1 << 2),
@@ -29,8 +27,11 @@ void update_flagsZS(uint8_t val);
 uint16_t addrcat(uint8_t seg_addr, uint8_t eff_addr);
 uint8_t sign(uint8_t val);
 
+void clear_memory(void);
+void load_memory_file(FILE* file, unsigned int file_size);
 void reset(void);
 uint8_t readcurr(void);
 void fetch(void);
+void run(void);
 
 #endif
