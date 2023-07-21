@@ -2,8 +2,6 @@
 #include "cpu.hpp"
 #include "instruction.hpp"
 
-#include "window.hpp"
-
 int main(int argc, char **argv){
 	// std::ifstream file(argv[1], std::ifstream::binary);
 	// file.seekg(0, file.end);
