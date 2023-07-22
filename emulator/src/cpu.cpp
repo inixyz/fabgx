@@ -17,6 +17,8 @@ void Cpu::reset(){
 	es = 0x00;
 	f = 0x00;
 	pc = 0x0000;
+	fetched = 0x00;
+	location = 0x0000;
 	active = false;
 }
 

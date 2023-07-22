@@ -69,7 +69,15 @@ void MemoryView::process(){
 	ImGui::SameLine(0, 0);
 	ImGui::Text("DF:");
 	ImGui::SameLine(0, 0);
-	ImGui::TextColored(cpu->get_flag(Cpu::Flag::DIRECTION) ? ImVec4(0, 1, 0, 1) : ImVec4(0.7, 0.7, 0.7, 0.7), "%d  ", cpu->get_flag(Cpu::Flag::DIRECTION));
+	ImGui::TextColored(cpu->get_flag(Cpu::Flag::DIRECTION) ? ImVec4(0, 1, 0, 1) : ImVec4(0.7, 0.7, 0.7, 0.7), "%d    ", cpu->get_flag(Cpu::Flag::DIRECTION));
+	ImGui::SameLine(0, 0);
+	ImGui::Text("fetched: ");
+	ImGui::SameLine(0, 0);
+	ImGui::TextColored(cpu->fetched ? ImVec4(0, 1, 0, 1) : ImVec4(0.7, 0.7, 0.7, 0.7), "%.2x  ", cpu->fetched);
+	ImGui::SameLine(0, 0);
+	ImGui::Text("location: ");
+	ImGui::SameLine(0, 0);
+	ImGui::TextColored(cpu->location ? ImVec4(0, 1, 0, 1) : ImVec4(0.7, 0.7, 0.7, 0.7), "%.4x  ", cpu->location);
 
 	ImGui::Text(" ");
 
