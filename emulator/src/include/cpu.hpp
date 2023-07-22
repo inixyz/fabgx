@@ -15,6 +15,7 @@ namespace fab8{
 	public:
 		friend class AddressingMode;
 		friend class Instruction;
+		friend class MemoryView;
 		static const unsigned int MEMORY_SIZE = 65536;
 
 	private:

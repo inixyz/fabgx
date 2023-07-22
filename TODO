@@ -1,1 +1,7 @@
-add memory view window
+emulator:
+	add commandline parameters
+	test functionality
+	add codeview window
+
+asembler:
+	make assembler
