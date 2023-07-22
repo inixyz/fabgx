@@ -28,7 +28,6 @@ void fab8::process_cmd_args(int argc, char **argv, uint8_t* ram, MemoryView* mem
 		if(!strcmp(argv[i], "--help")) arg_help();
 		else if(!strcmp(argv[i], "-memview")) memory_view = new fab8::MemoryView(cpu, 540, 380, "Memory");
 		else{
-			std::cout << "got here";
 			std::ifstream file(argv[i], std::ifstream::binary);
 			if(!file) exit_info("Could not find the specified file.");
 
