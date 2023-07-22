@@ -11,9 +11,12 @@ int main(int argc, char **argv){
 	fab8::MemoryView memory_view(&cpu, 540, 380, "memory_view");
 
 	fab8::Instruction::init();
-	cpu.set_memory(ram);
-	cpu.reset();
+	//cpu.set_memory(ram);
+	//cpu.reset();
 
+	
+	sf::sleep(sf::seconds(1000));
+	
 	delete[] ram;
 
 	// std::ifstream file(argv[1], std::ifstream::binary);

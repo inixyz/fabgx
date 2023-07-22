@@ -19,7 +19,7 @@ namespace fab8{
 		static const unsigned int MEMORY_SIZE = 65536;
 
 	private:
-		bool active;
+		bool active = false;
 		uint8_t a, x, y, sp, ss, ds, es, f, *memory, fetched;
 		uint16_t pc, location;
 

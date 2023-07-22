@@ -31,10 +31,6 @@ void MemoryView::process(){
 	ImGui::SameLine(0, 0);
 	ImGui::TextColored(cpu->sp ? ImVec4(0, 1, 0, 1) : ImVec4(0.7, 0.7, 0.7, 0.7), "%.2x  ", cpu->sp);
 	ImGui::SameLine(0, 0);
-	ImGui::Text("PC: ");
-	ImGui::SameLine(0, 0);
-	ImGui::TextColored(cpu->pc ? ImVec4(0, 1, 0, 1) : ImVec4(0.7, 0.7, 0.7, 0.7), "%.4x  ", cpu->pc);
-	ImGui::SameLine(0, 0);
 	ImGui::Text("SS: ");
 	ImGui::SameLine(0, 0);
 	ImGui::TextColored(cpu->ss ? ImVec4(0, 1, 0, 1) : ImVec4(0.7, 0.7, 0.7, 0.7), "%.2x  ", cpu->ss);
@@ -45,7 +41,15 @@ void MemoryView::process(){
 	ImGui::SameLine(0, 0);
 	ImGui::Text("ES: ");
 	ImGui::SameLine(0, 0);
-	ImGui::TextColored(cpu->es ? ImVec4(0, 1, 0, 1) : ImVec4(0.7, 0.7, 0.7, 0.7), "%.2x    ", cpu->es);
+	ImGui::TextColored(cpu->es ? ImVec4(0, 1, 0, 1) : ImVec4(0.7, 0.7, 0.7, 0.7), "%.2x  ", cpu->es);
+	ImGui::SameLine(0, 0);
+	ImGui::Text("active: ");
+	ImGui::SameLine(0, 0);
+	ImGui::TextColored(cpu->active ? ImVec4(0, 1, 0, 1) : ImVec4(0.7, 0.7, 0.7, 0.7), "%d  ", cpu->active);
+	ImGui::SameLine(0, 0);
+	ImGui::Text("PC: ");
+	ImGui::SameLine(0, 0);
+	ImGui::TextColored(cpu->pc ? ImVec4(0, 1, 0, 1) : ImVec4(0.7, 0.7, 0.7, 0.7), "%.4x  ", cpu->pc);
 
 	ImGui::Text("CF:");
 	ImGui::SameLine(0, 0);

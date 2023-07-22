@@ -1,4 +1,5 @@
 emulator:
+	add active variable on memory view window
 	add commandline parameters
 	test functionality
 	add codeview window
