@@ -1,5 +1,4 @@
 emulator:
-	add commandline parameters
 	test functionality
 	add codeview window
 
