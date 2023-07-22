@@ -13,6 +13,7 @@ namespace fab8{
 			std::string title;
 			float scale;
 			sf::Event event;
+			sf::Clock clock;
 			sf::View view;
 			std::thread thread;
 
@@ -21,6 +22,7 @@ namespace fab8{
 
 		private:
 			virtual void draw();
+			virtual void process();
 			void run();
 	};
 }
