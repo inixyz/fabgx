@@ -2,8 +2,6 @@
 #include "cmd_args.hpp"
 #include "instruction.hpp"
 
-#include <iostream>
-
 fab8::Cpu cpu;
 uint8_t* ram;
 fab8::MemoryView* memory_view;
