@@ -2,12 +2,12 @@
 #include "cmd_args.hpp"
 #include "instruction.hpp"
 
-fab8::Cpu cpu;
-uint8_t* ram;
-fab8::MemoryView* memory_view;
-
 int main(int argc, char **argv){
+	fab8::Cpu cpu;
 	uint8_t* ram = new uint8_t[fab8::Cpu::MEMORY_SIZE];
+
+	fab8::MemoryView* memory_view;
+
 	fab8::process_cmd_args(argc, argv, ram, memory_view, &cpu);
 
 	cpu.set_memory(ram);
