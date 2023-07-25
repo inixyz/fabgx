@@ -5,11 +5,11 @@
 namespace fab8{
 	class Cpu{
 		enum Flag{
-			CARRY = (1 << 0),
-			ZERO = (1 << 1),
-			SIGN = (1 << 2),
-			OVERFLOW = (1 << 3),
-			DIRECTION = (1 << 4)
+			CARRY = 1 << 0,
+			ZERO = 1 << 1,
+			SIGN = 1 << 2,
+			OVERFLOW = 1 << 3,
+			DIRECTION = 1 << 4
 		};
 
 	public:
