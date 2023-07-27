@@ -1,8 +1,0 @@
-emulator:
-	add codeview window
-	test functionality
-
-asembler:
-	make assembler
-
-revamp system design
