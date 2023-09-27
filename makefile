@@ -1,2 +1,2 @@
 default:
-	$(CC) examples/primitives.c -I ./ -o examples/primitives
+	$(CC) examples/primitives.c -I ./ -o examples/primitives.out
