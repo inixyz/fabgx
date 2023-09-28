@@ -47,23 +47,18 @@ uint32_t fabgx_mix_colors(const uint32_t color1, const uint32_t color2){
 	return fabgx_rgba(r, g, b, a);
 }
 
-void fabgx_blend_index(fabgx_surface* surface, const unsigned int i,
-	const uint32_t color){
-
-	surface->pixels[i] = fabgx_mix_colors(surface->pixels[i], color);
-}
-
 void fabgx_pixel(fabgx_surface* surface, const fabgx_vec2 pos,
 	const uint32_t color){
 
-	fabgx_blend_index(surface, pos.y * surface->size.x + pos.x, color);
+	const unsigned int i = pos.y * surface->size.x + pos.x;
+	surface->pixels[i] = fabgx_mix_colors(surface->pixels[i], color);
 }
 
 void fabgx_fill(fabgx_surface* surface, const uint32_t color){
 	const unsigned int lenght = surface->size.x * surface->size.y;
 
 	for(unsigned int i = 0; i < lenght; i++){
-		fabgx_blend_index(surface, i, color);
+		surface->pixels[i] = fabgx_mix_colors(surface->pixels[i], color);
 	}
 }
 
