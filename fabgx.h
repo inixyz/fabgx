@@ -1,11 +1,9 @@
 #ifndef FABGX_H
 #define FABGX_H
 
-#include <stdint.h>
+#include <stdint.h> // uint8_t, uint32_t
 
-typedef struct{
-	unsigned int x, y;
-}fabgx_vec2;
+typedef struct{unsigned int x, y;} fabgx_vec2;
 
 typedef struct{
 	uint32_t* pixels;
