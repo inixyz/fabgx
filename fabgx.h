@@ -67,4 +67,16 @@ void fabgx_fill(fabgx_surface* surface, const uint32_t color){
 	}
 }
 
+void fabgx_rect(fabgx_surface* surface, const fabgx_vec2 pos,
+	const fabgx_vec2 size, const uint32_t color){
+
+	const fabgx_vec2 end_pos = {pos.x + size.x, pos.y + size.y};
+
+	for(unsigned int y = pos.y; y < end_pos.y; y++){
+		for(unsigned int x = pos.y; x < end_pos.x; x++){
+			fabgx_pixel(surface, (fabgx_vec2){x, y}, color);
+		}
+	}
+}
+
 #endif // FABGX_H
