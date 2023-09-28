@@ -21,10 +21,10 @@ uint32_t fabgx_rgba(const uint8_t r, const uint8_t g, const uint8_t b,
 void fabgx_unpack_rgba(const uint32_t color, uint8_t* r, uint8_t* g, uint8_t* b,
 	uint8_t* a){
 
-	*r = color >> 24;
-	*g = color >> 16 & 0xFF;
-	*b = color >> 8 & 0xFF;
-	*a = color & 0xFF;
+	if(r) *r = color >> 24;
+	if(g) *g = color >> 16 & 0xFF;
+	if(b) *b = color >> 8 & 0xFF;
+	if(a) *a = color & 0xFF;
 }
 
 uint32_t fabgx_mix_colors(const uint32_t color1, const uint32_t color2){
