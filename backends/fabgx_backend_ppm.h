@@ -13,9 +13,9 @@ unsigned int fabgx_save_to_ppm(const fabgx_surface* surface,
 
 	const unsigned int lenght = surface->size.x * surface->size.y;
 
-	uint8_t r, g, b, a;
+	uint8_t r, g, b;
 	for(unsigned int i = 0; i < lenght; i++){
-		fabgx_unpack_rgba(surface->pixels[i], &r, &g, &b, &a);
+		fabgx_unpack_rgba(surface->pixels[i], &r, &g, &b, NULL);
 
 		fwrite(&r, 1, 1, file);
 		fwrite(&g, 1, 1, file);
