@@ -2,7 +2,6 @@
 #define FABGX_H
 
 #include <stdint.h>
-#include <stdlib.h>
 
 typedef struct{
 	uint8_t r, g, b, a;
@@ -59,12 +58,16 @@ void fabgx_rect(fabgx_surface* surface, const fabgx_vec2 pos,
 	}
 }
 
+int fabgx_absint(const int val){
+	return val < 0 ? -val : val;
+}
+
 void fabgx_line(fabgx_surface* surface, fabgx_vec2 start_pos,
 	const fabgx_vec2 end_pos, const fabgx_color color){
 
 	// https://en.wikipedia.org/wiki/Bresenham's_line_algorithm
-	const int dx = abs(end_pos.x - start_pos.x);
-	const int dy = -abs(end_pos.y - start_pos.y);
+	const int dx = fabgx_absint(end_pos.x - start_pos.x);
+	const int dy = -fabgx_absint(end_pos.y - start_pos.y);
 	const int sx = start_pos.x < end_pos.x ? 1 : -1;
 	const int sy = start_pos.y < end_pos.y ? 1 : -1;
 
