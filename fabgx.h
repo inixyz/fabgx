@@ -3,9 +3,28 @@
 
 #include <stdint.h>
 
+//------------------------------------------------------------------------------
+
 typedef struct{
 	uint8_t r, g, b, a;
 }fabgx_color;
+
+typedef struct{
+	unsigned int x, y;
+}fabgx_vec2;
+
+typedef struct{
+	fabgx_color* pixels;
+	fabgx_vec2 size;
+}fabgx_surface;
+
+//------------------------------------------------------------------------------
+
+int fabgx_absint(const int val){
+	return val < 0 ? -val : val;
+}
+
+//------------------------------------------------------------------------------
 
 fabgx_color fabgx_mix_colors(const fabgx_color color1,
 	const fabgx_color color2){
@@ -22,14 +41,7 @@ fabgx_color fabgx_mix_colors(const fabgx_color color1,
 	};
 }
 
-typedef struct{
-	unsigned int x, y;
-}fabgx_vec2;
-
-typedef struct{
-	fabgx_color* pixels;
-	fabgx_vec2 size;
-}fabgx_surface;
+//------------------------------------------------------------------------------
 
 void fabgx_fill(fabgx_surface* surface, const fabgx_color color){
 	const unsigned int lenght = surface->size.x * surface->size.y;
@@ -39,12 +51,16 @@ void fabgx_fill(fabgx_surface* surface, const fabgx_color color){
 	}
 }
 
+//------------------------------------------------------------------------------
+
 void fabgx_pixel(fabgx_surface* surface, const fabgx_vec2 pos,
 	const fabgx_color color){
 
 	const unsigned int i = pos.y * surface->size.x + pos.x;
 	surface->pixels[i] = fabgx_mix_colors(surface->pixels[i], color);
 }
+
+//------------------------------------------------------------------------------
 
 void fabgx_rect(fabgx_surface* surface, const fabgx_vec2 pos,
 	const fabgx_vec2 size, const fabgx_color color){
@@ -58,9 +74,7 @@ void fabgx_rect(fabgx_surface* surface, const fabgx_vec2 pos,
 	}
 }
 
-int fabgx_absint(const int val){
-	return val < 0 ? -val : val;
-}
+//------------------------------------------------------------------------------
 
 void fabgx_line(fabgx_surface* surface, fabgx_vec2 start_pos,
 	const fabgx_vec2 end_pos, const fabgx_color color){
