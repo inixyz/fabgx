@@ -11,11 +11,11 @@ typedef struct{
 
 typedef struct{
 	unsigned int x, y;
-}fabgx_vec2;
+}fabgx_vec2u;
 
 typedef struct{
 	fabgx_color* pixels;
-	fabgx_vec2 size;
+	fabgx_vec2u size;
 }fabgx_surface;
 
 //------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ void fabgx_fill(fabgx_surface* surface, const fabgx_color color){
 
 //------------------------------------------------------------------------------
 
-void fabgx_pixel(fabgx_surface* surface, const fabgx_vec2 pos,
+void fabgx_pixel(fabgx_surface* surface, const fabgx_vec2u pos,
 	const fabgx_color color){
 
 	const unsigned int i = pos.y * surface->size.x + pos.x;
@@ -62,22 +62,22 @@ void fabgx_pixel(fabgx_surface* surface, const fabgx_vec2 pos,
 
 //------------------------------------------------------------------------------
 
-void fabgx_rect(fabgx_surface* surface, const fabgx_vec2 pos,
-	const fabgx_vec2 size, const fabgx_color color){
+void fabgx_rect(fabgx_surface* surface, const fabgx_vec2u pos,
+	const fabgx_vec2u size, const fabgx_color color){
 
-	const fabgx_vec2 end_pos = {pos.x + size.x, pos.y + size.y};
+	const fabgx_vec2u end_pos = {pos.x + size.x, pos.y + size.y};
 
 	for(unsigned int y = pos.y; y < end_pos.y; y++){
 		for(unsigned int x = pos.y; x < end_pos.x; x++){
-			fabgx_pixel(surface, (fabgx_vec2){x, y}, color);
+			fabgx_pixel(surface, (fabgx_vec2u){x, y}, color);
 		}
 	}
 }
 
 //------------------------------------------------------------------------------
 
-void fabgx_line(fabgx_surface* surface, fabgx_vec2 start_pos,
-	const fabgx_vec2 end_pos, const fabgx_color color){
+void fabgx_line(fabgx_surface* surface, fabgx_vec2u start_pos,
+	const fabgx_vec2u end_pos, const fabgx_color color){
 
 	// https://en.wikipedia.org/wiki/Bresenham's_line_algorithm
 	const int dx = fabgx_absint(end_pos.x - start_pos.x);
@@ -101,6 +101,39 @@ void fabgx_line(fabgx_surface* surface, fabgx_vec2 start_pos,
 			error += dx;
 			start_pos.y += sy;
 		}
+	}
+}
+
+//------------------------------------------------------------------------------
+
+void fabgx_ellipse(fabgx_surface* surface, const fabgx_vec2u center,
+	const fabgx_vec2u size, const fabgx_color color){
+
+	const unsigned int ww = size.x * size.x;
+	const unsigned int hh = size.y * size.y;
+	const unsigned int wwhh = ww * hh;
+
+	int x0 = size.x, x1;
+	int dx = 0;
+
+	for(int x = -(int)size.x; x <= (int)size.x; x++){
+		fabgx_pixel(surface, (fabgx_vec2u){center.x + x, center.y}, color);
+	}
+
+	for(int y = 1; y <= size.y; y++){
+	    for(x1 = x0 - (dx - 1); x1 > 0; x1--){
+			if(x1 * x1 * hh + y * y * ww <= wwhh) break;
+	    }
+
+	    dx = x0 - x1;
+	    x0 = x1;
+
+	    for(int x = -x0; x <= x0; x++){
+	    	fabgx_pixel(surface, (fabgx_vec2u){center.x + x, center.y - y},
+	    		color);
+	    	fabgx_pixel(surface, (fabgx_vec2u){center.x + x, center.y + y},
+	    		color);
+	    }
 	}
 }
 
