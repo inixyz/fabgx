@@ -1,2 +1,2 @@
 default:
-	g++ src/*.cpp
+	g++ src/*.c
